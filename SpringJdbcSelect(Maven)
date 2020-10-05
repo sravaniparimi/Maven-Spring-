@@ -1,0 +1,25 @@
+package com.jnit;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+public class SpringJdbcSelect {
+private SessionFactory sef;
+
+
+public void setSef(SessionFactory sef) {
+	this.sef = sef;
+}
+
+public void insert(Student s) {
+	Session se=sef.openSession();
+	Transaction tx=se.beginTransaction();
+	se.save(s);
+	tx.commit();
+	
+	se.close();
+}
+
+}
+
